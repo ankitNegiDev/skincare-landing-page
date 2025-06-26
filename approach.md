@@ -4,8 +4,8 @@
 
 * so by analysing the figma -- i have to creata a kind of non-functional web-site -- where i don't have to bother about the backend or any functional logic -- so far -- if need we will see it later.
 * second thing is we need to focus more on ui or user experience ... and for that i need to use gsap -- (read about it ---)
-* i need to use tailwind css -- which is fine easy one
-* i need to use react -- so easy one -- since functionality is not there we can create it easily.. no api calls etc --- (think about it mentioning in comments -- if this project expect the api call then how we can do that -- not in detail but in berief -- to just showcase that i know this also ...)
+* i need to use tailwind css -- which is fine we can do this.
+* i need to use react -- we can do this -- since functionality is not there we can create it easily.. no api calls etc --- (think about it mentioning in comments -- if this project expect the api call then how we can do that -- not in detail but in berief -- to just showcase that i know this also ...)
 
 * **quick update -- we need functional button like when user click on the button then it should slide the product -- i guess we need to make a kind of crousel effect something like that -- do i need to add gsap here ?? -- i don't think so -- but we will see it later --**
 
