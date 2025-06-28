@@ -256,7 +256,7 @@ function HeroSection() {
                     </p>
 
                     <img
-                        src="../../../public/assets/hero image1.jpg"
+                        src="/assets/hero image1.jpg"
                         alt="Product Tube"
                         className="hero-tube w-[180px] h-auto object-contain rounded-2xl"
                     />
@@ -267,13 +267,13 @@ function HeroSection() {
 
                     <div className="hero-model relative z-10 w-[280px] h-auto mt-6">
                         <img
-                            src="../../../public/assets/hero image 2.png"
+                            src="/assets/hero image 2.png"
                             alt="Model"
                             className="w-full h-full object-cover rounded-xl"
                         />
                         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
                             <OverlayCard
-                                image="../../../public/assets/hero overlay card image.jpg"
+                                image="/assets/hero overlay card image.jpg"
                                 callerStyle="bg-[#f1f6e9] text-gray-800 text-sm px-4 py-2 rounded-full shadow-md"
                             >
                                 While giving you an invigorating cleansing experience.
@@ -306,7 +306,7 @@ function HeroSection() {
                         </h1>
 
                         <img
-                            src="../../../public/assets/hero image1.jpg"
+                            src="/assets/hero image1.jpg"
                             alt="Product Tube"
                             className="hero-tube w-[180px] md:w-[250px] lg:w-[222.61px] h-auto object-contain rounded-2xl"
                         />
@@ -320,13 +320,13 @@ function HeroSection() {
 
                     <div className="hero-model relative z-10 w-[280px] md:w-[440px] lg:w-[610px] h-auto mt-40 md:mr-48">
                         <img
-                            src="../../../public/assets/hero image 2.png"
+                            src="/assets/hero image 2.png"
                             alt="Model"
                             className="w-full h-full object-cover rounded-xl"
                         />
                         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
                             <OverlayCard
-                                image="../../../public/assets/hero overlay card image.jpg"
+                                image="assets/hero overlay card image.jpg"
                                 callerStyle="bg-[#f1f6e9] text-gray-800 text-sm px-4 py-2 rounded-full shadow-md"
                             >
                                 While giving you an invigorating cleansing experience.

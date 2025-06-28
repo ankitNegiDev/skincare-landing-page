@@ -182,7 +182,7 @@ function WhyOurProducts() {
                 {/* Right Column */}
                 <div className="flex-1 relative w-full max-w-[500px] sm:max-w-none">
                     <img
-                        src="../../../public/assets/why our products image 1.png"
+                        src="/assets/why our products image 1.png"
                         alt="Woman skincare"
                         className="rounded-2xl w-full h-auto object-cover"
                     />
@@ -190,7 +190,7 @@ function WhyOurProducts() {
                     {/* OverlayCard */}
                     <div className="absolute  left-1/2 transform -translate-x-1/2   bottom-[50px] sm:bottom-10 md:bottom-20 lg:bottom-20">
                         <OverlayCard
-                            image="../../../public/assets/award-svgrepo-com.png"
+                            image="/assets/award-svgrepo-com.png"
                             callerStyle="bg-[#EFF5E1] px-4 py-2 sm:px-6 sm:py-3"
                             imageBg="bg-[#2D3B36]"
                             imageWrapper={true}
