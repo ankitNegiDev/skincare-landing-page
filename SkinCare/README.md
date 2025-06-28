@@ -5,6 +5,12 @@ A modern, responsive, and animated skincare brand landing page built with React,
 
 ---
 
+## Live url of skincare landing page
+
+[live url](https://skincare-landing-page.vercel.app/)
+
+---
+
 ## 📦 Tech Stack
 
 - **React**
