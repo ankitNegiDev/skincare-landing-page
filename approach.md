@@ -82,3 +82,204 @@
       * (c) Word-by-word paragraph animations
       * (d) Smooth toggle animations for elements like FAQs
     * It offers **timeline control** and performs better than CSS for **complex and precise animations**.
+
+---
+
+* ## Now main thing started --- Thinking about component -- how many components we need and so on
+
+* ## (1) Navbar component
+
+  * this component will have a kind of 3 div inside the nav tag and for semantic purpose i can wrap the nav inside the header tag .. and using disply flex i can fix the layout
+
+  * if time left think of hamburger menue in mobile phone or smaller screen -- lets see it while styling .
+
+* ## (2) the second component could be a hero section
+
+  * this is how i structure my main page content ...
+
+    ```planetext
+        <main class="main-div">
+        ├── <div class="first-div">
+        │     ├── <div class="left-div">
+        │     │     ├── Small tagline (left)
+        │     │     └── Heading: GLOW NATURALLY (make sure it comes to center--)
+        │     └── <div class="right-div">
+        │           └── Product image (right)
+
+        ├── <div class="second-div">
+        │     └── Button: Shop Now
+
+        ├── <div class="third-div (image-block)">
+        │     ├── Background text: SKINCARE (huge, faded)
+        │     └── <div class="overlay-message-card">
+        |           |- a image 
+        |           └── a overlay div content
+        │               ├── Circular image (left)
+        │               └── Text (right)
+        │               Use: display flex
+
+        └── <div class="fourth-div">
+                Full-width paragraph below 
+    ```
+
+  * its okey to structure it like this -- but just think -- the overlay div is coming multiple times in the web-site it's better we should create a seprate component for it --
+
+* ## (3) OverlayCard component
+
+  * this component will have a div inside it we will have 2 div -- one for image and another for text or actual overlay div content.
+  * but there is a question -- the image inside the overlay card -- have differnt background color -- so we can't write direct css in overlaycard  component -- somewhere we need to pass the differenciating css to overlay card component. okk and we can use props for that cool...we will see it while creating this component for time being its fine--
+
+  * out overlay card component will look something like this we will see if changes required.
+
+    ```jsx
+        // check it for promo banner can we use it directly inside it or not ..
+        export default function OverlayCard({ image, children }) {
+        return (
+            <div className="flex items-center">
+            <img src={image} className="w-8 h-8 rounded-full mr-2" />
+            <div>{children} or text or inside paragraph </div>
+            </div>
+        );
+    }
+    ```
+
+* ## (4) Button component
+
+  * just like overlaycard component we also have multiple button -- so why not use the single button component that's the usecase of react to re-use the component. and for styling we will expect props based on when we will call our button component then its responsiblity of caller to pass the style like how and what kind of button he/she wants.
+  * By doing this we are following DRY principle , Reusability.
+  * but i need to pass the text also right -- like best selling products -- but for that i can use either a text prop , or children prop.
+  * **`what is children prop`**
+    * in react children prop is a special prop that is used to pass the content b/w the opening and closing tags of a component. we can event pass the icons and other components as a children based on usecase.
+    * children is what we put inside the component's tags and React automatically passes it into the component via the children prop.
+
+  * something like this our button component will look like.
+
+    ```jsx
+        export default function Button({ children, callerStyle = "", onClick }) {
+        return (
+            <button
+                onClick={onClick}
+                className={`transition duration-300 ease-in-out ${callerStyle}`}
+            >
+                {children}
+            </button>
+        );
+        }
+    ```
+
+  * we can pass text like this -- `<Button className="" text="Shop Now" onClick={someFunction} />` but this is ideally we don't do. and another reason is what if we want to pass a html element inside the button may be its a requirement assume like inside the button there is a text inside the span or some bold tag , em , strong tag etc -- due to some styling purpose or some semantic purpose -- and its only prsent inside the single button so we can pass the span/em/strong as a prop. but with children prop we can do this that's why we are using children prop.
+
+* ## (5) WhyOurProducts component --
+
+  * this component will have 2 div on left and right -- left is for content and button (button component we already have) and right is for overlay card which we already have.
+  * this is how our whyourproducts component will look like -- if changes neeed we will see later while code
+
+    ```planetext
+
+        <section>
+        ├── <div> (Wrapper: Flex container for Left and Right sections)
+        │
+        │   ├── <div> (Left Side: Text Content and button)
+        │   │   ├── <Button>Why Our Products</Button>
+        │   │   ├── <h2>YOUR SKIN DESERVES THE BEST CARE.</h2>
+        │   │   ├── <p>Subheading paragraph about the skincare</p>
+        │   │   └── <ul> Feature List
+        │   │       ├── <li>
+        │   │       │   ├── <span>01</span>
+        │   │       │   └── <div>
+        │   │       │       ├── <h3>Bio Ingredients</h3>
+        │   │       │       └── <p>Description text</p>
+        │   │       ├── <li>... (02 - Everything Natural)
+        │   │       └── <li>... (03 - All Handmade)
+        │
+        │   └── <div> (Right Side: Award OverlayCard)
+        │       └── <OverlayCard
+        │              image="/assets/award.png"
+        │              text="Best Skin Care Product Award Winning"
+        │           />
+        |       |-  another div for since 2001 and learn more ( is it learn more a button -- check it later).
+        </section>
+    ```
+
+* ## (6) BestSellingSection component --
+
+  * for this we need a button component for best selling products -- which we already have.
+  * then we need left and right arrow button component -- (we can use svg -- ) check it while code.
+  * then we need to create a crosal component that will expect a image card.
+  * then we need to create a card image component obiously..
+
+  * ## Reused Components
+
+    * `Button`: Reused for the section label (e.g., "Best Selling Products").
+    * `ArrowButton`: Navigates the carousel left/right. Takes a `direction` prop.
+    * `Carousel`: Horizontally scrollable wrapper for product cards.
+    * `ImageCard`: Displays product image, name, and price.
+
+  * this is how our component will look like
+
+    ```jsx
+        <section class="best-selling-section">
+
+            <div class="section-header">
+
+                // think do i need to add a filter logic here -- check it while code -- i guess yess -- when user click on best selling products then all the best selling products should be visible -- but we don't have the multiple product -- check it while code..
+                <Button class="filter-button">
+                    Best Selling Products
+                </Button>
+
+                <h2 class="section-title">
+                    // may be we need to use span -- check it while styling..
+                    Skincare That Brings Out  
+                    Your Natural Radiance
+                </h2>
+
+                <div class="arrow-controls">
+                    <ArrowButton direction="left" />
+                    <ArrowButton direction="right" />
+                </div>
+            </div>
+
+            // Product Carousel Section
+            <Carousel>
+
+                // Individual Product Cards
+                <ImageCard
+                    image="/assets/product1.png"
+                    title="ALYA SKIN CLEANSER."
+                    price="FROM $29.99"
+                />
+
+                <ImageCard
+                    image="/assets/product2.png"
+                    title="RITUAL OF SAKURA."
+                    price="FROM $27.99"
+                />
+
+                <ImageCard
+                    image="/assets/product3.png"
+                    title="THE BODY LOTION."
+                    price="FROM $19.99"
+                />
+            </Carousel>
+
+        </section>
+    ```
+
+* ## (7) PromoBanner component --
+
+  * this component will have a div and it will have a background image -- and then we will have a overlay kind of div -- check it can we use our overlay ??  the ans could be yes but we have a shop now button also as a overlay -- either we pass this as a prop-- and using children prop we can achive the desired layout -- check it if it works then go with it else create a seprate component.
+  * with our current overlay-- we can go ahead -- either we will re-design our overlay or write jsx in promobanner... we will see while coding.. we can have something type prop and based on that we can decide -- which one to choose...something like -- check it while creating overlay component...
+
+* ## (8) FeaturedProductsSection componant --
+
+  * this component will have a heading --
+  * a button component -
+  * and a card image component --
+  * but check for the logic when user click on button  then ui should change just like in yt-- on the home page video container card changed when user select gaming , education etc..
+
+* ## (9) FAQSection component
+
+  * this will have a left and right div -- and inside left div we will have a overlay component
+  * and inside right div we will have a button then a heading and then a accordian component-
+
+* ## (10) at last we have footer section

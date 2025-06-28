@@ -1,11 +1,14 @@
 
 import './App.css'
+import HeroSection from './components/HeroSection/HeroSection'
+import Navbar from './components/Navbar/Navbar'
+import Home from './Pages/Home'
 
 function App() {
 
     return (
         <>
-            <div className='bg-blue-300'>Hello</div>
+            <Home/>
         </>
     )
 }
